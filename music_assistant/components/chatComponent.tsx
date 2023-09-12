@@ -1,5 +1,6 @@
 "use client"
-import { useChat } from "ai/react";
+import { useChat, Message } from "ai/react";
+
 
 export default function chatComponent() {
     // Vercel AI SDK (ai package) useChat()
@@ -11,16 +12,43 @@ export default function chatComponent() {
     return ( 
 <div>
 
+
+
 <div className="flex-grow overflow-y-auto">
 <div className="flex flex-col space-y-2 p-4">
 
-    {/* <!-- Individual chat messages --> */}
-    <div className="self-end bg-blue-500 text-white rounded-lg p-2 flex items-center">
-        <p>This is a sender message</p>
-    </div>
-    <div className="self-start bg-gray-200 rounded-lg p-2 flex items-center">
-        <p>This is a receiver message</p>
-    </div>
+{messages.map((message: Message)=>{
+    return(
+        <div key={message.id}>
+            {/* name of person talking */}
+            {
+                message.role === "assistant" 
+                ? 
+                <div className="self-start bg-gray-200 rounded-lg p-2 w-fit flex items-center">
+                    {message.content.split("\n").map((currentTextBlock: string, index: number) =>{
+                if(currentTextBlock === "") {
+                    return <p className="p-0.5" key={message.id + index}>&nbsp;</p>
+                } else {
+                    return <p className="p-0.5" key={message.id + index}>{currentTextBlock}</p>
+                    }
+            })}
+                </div>
+                :
+                <div className="flex justify-end">
+                <div className=" bg-blue-500 text-white rounded-lg p-2 w-fit flex items-center">
+                    {message.content.split("\n").map((currentTextBlock: string, index: number) =>{
+                if(currentTextBlock === "") {
+                    return <p className="p-0.5" key={message.id + index}>&nbsp;</p>
+                        } else {
+                            return <p className="p-0.5" key={message.id + index}>{currentTextBlock}</p>
+                            }
+                })}
+                </div>
+                </div>
+            }
+        </div>
+    )
+})}
 
 </div>
 </div>
