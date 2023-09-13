@@ -2,7 +2,7 @@
 import { useChat, Message } from "ai/react";
 
 
-export default function chatComponent() {
+export default function ChatComponent() {
     // Vercel AI SDK (ai package) useChat()
     // useChat -> handles messages for us, user input, handling user submits, etc.
     const { input, handleInputChange, handleSubmit, isLoading, messages } = useChat()
