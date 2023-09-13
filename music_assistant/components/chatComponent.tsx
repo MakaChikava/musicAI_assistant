@@ -11,7 +11,6 @@ export default function ChatComponent() {
     console.log(input)
     return ( 
 <div>
-
 <div className="flex-grow overflow-y-auto">
 <div className="flex flex-col space-y-2 p-4">
 
