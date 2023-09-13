@@ -24,7 +24,7 @@ export default function chatComponent() {
             {
                 message.role === "assistant" 
                 ? 
-                <div className="self-start bg-gray-200 rounded-lg p-2 w-fit flex items-center">
+                <div className="self-start bg-gray-200 rounded-lg p-2 w-fit flex items-center flex-wrap">
                     {message.content.split("\n").map((currentTextBlock: string, index: number) =>{
                 if(currentTextBlock === "") {
                     return <p className="p-0.5" key={message.id + index}>&nbsp;</p>
