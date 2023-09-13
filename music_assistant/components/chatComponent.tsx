@@ -12,8 +12,6 @@ export default function chatComponent() {
     return ( 
 <div>
 
-
-
 <div className="flex-grow overflow-y-auto">
 <div className="flex flex-col space-y-2 p-4">
 
